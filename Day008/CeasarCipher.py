@@ -1,21 +1,13 @@
-alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
-reversealphabet = "zyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcba"
-def encode(message: str, shift: int):
-    encodedmessage = ""
+def caesar_cipher(message: str, shift: int, mode: str):
+    alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
+    reversealphabet = "zyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcba"
+    result = ""
     message = message.lower()
-    for c in message :
-        if c in alphabet : 
-            encodedmessage += alphabet[alphabet.index(c) + shift]
+    if mode == "decode":
+        shift *= -1
+    for c in message:
+        if c in alphabet:
+            result += alphabet[alphabet.index(c) + shift]
         else:
-            encodedmessage += c
-    return encodedmessage
-
-def decode(message: str, shift: int) :
-    decodedmessage = ""
-    message = message.lower()
-    for c in message :
-        if c in reversealphabet :
-            decodedmessage += reversealphabet[reversealphabet.index(c) + shift]
-        else:
-            decodedmessage += c
-    return decodedmessage
+            result += c
+    return result
