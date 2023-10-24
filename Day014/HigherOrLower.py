@@ -333,7 +333,7 @@ def update() :
     guess = input("Who has more followers? [A] or [B]: ").lower()
     if celeb_a["follower_count"] > celeb_b["follower_count"] :
         answer = "a"
-    elif celeb_a["follower_count"] < celeb_b["follower_count"] :
+    else :
         answer = "b"
     if guess == answer :
         score += 1
