@@ -9,7 +9,7 @@
 # - If the dealer's hand is closer to 21 than the player's hand, the player loses their bet
 # - The dealer stops at 17 or higher.
 import random
-global finished
+finished = False
 logo = """
 .------.            _     _            _    _            _    
 |A_  _ |.          | |   | |          | |  (_)          | |   
@@ -46,12 +46,14 @@ def calculate_score(card_list) :
     return score
 
 def start(player_cards, cpu_cards) :
+    global finished
     for i in range(2) :
         player_cards.append(random.choice(cards))
         cpu_cards.append(random.choice(cards))
     print(logo)
     
-def end(player_cards, cpu_cards, finished) :
+def end(player_cards, cpu_cards) :
+    global finished
     player_score = calculate_score(player_cards)
     cpu_score = calculate_score(cpu_cards)
     while cpu_score < 17 :
@@ -74,21 +76,21 @@ Dealer score: {cpu_score}""")
         print ("You win!")
     print("Thanks for playing!")
     finished = True
-    return finished
     
-def update(player_cards, cpu_cards, finished) :
+def update(player_cards, cpu_cards) :
+    global finished
     player_score = calculate_score(player_cards)
     cpu_score = calculate_score(cpu_cards)
     print(f"Your cards: {player_cards}\nYour score: {player_score}\n\nDealer cards: [{cpu_cards[0]}, '?']\n")
     if player_score > 21 or cpu_score == 21 :
         finished = True
-        end(player_cards, cpu_cards, finished)
+        end(player_cards, cpu_cards)
         return
     else :
         action = input("Do you want to [S]tand or [H]it?").lower()
         if action == "stand" or action == "s" :
             finished = True
-            end(player_cards, cpu_cards, finished)
+            end(player_cards, cpu_cards)
             return
         elif action == "hit" or action == "h" :
             player_cards.append(random.choice(cards))
@@ -97,6 +99,5 @@ def update(player_cards, cpu_cards, finished) :
     
 player_cards = []
 cpu_cards = []
-finished = False
 start(player_cards, cpu_cards)
-while not finished : update(player_cards, cpu_cards, finished)
+while not finished : update(player_cards, cpu_cards)
