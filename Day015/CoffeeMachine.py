@@ -67,7 +67,9 @@ def create_recipe(drink) :
         print(f"You didn't put in enough money. Refunding...")
         return
     else :
-        print(f"Refunding €{item['cost'] - coin_input}...\nEnjoy your {drink}!")
+        for resource in item["ingredients"] :
+            resources[resource] -= item["ingredients"][resource]
+        print(f"Returning €{item['cost'] - coin_input}...\nEnjoy your {drink}!")   
         money += item['cost']
     
 def process_coins(quarters, dimes, nickels, pennies) :
