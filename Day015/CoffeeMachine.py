@@ -68,7 +68,7 @@ def create_recipe(drink) :
         return
     else :
         for resource in item["ingredients"] :
-            resources[resource] -= item["ingredients"][resource]
+            resources[resource] -= item["ingredients"][resource]  
         print(f"Returning €{item['cost'] - coin_input}...\nEnjoy your {drink}!")   
         money += item['cost']
     
