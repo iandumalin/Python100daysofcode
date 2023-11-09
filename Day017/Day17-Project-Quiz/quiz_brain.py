@@ -14,7 +14,7 @@ class QuizBrain :
         else :
             print("Incorrect...")
             
-        print(f"Current score: {self.score}/{len(self.question_list)}")
+        print(f"Current score: {self.score}/{self.question_number}\n")
         
     def still_has_questions(self) -> bool :
         return len(self.question_list) >= self.question_number + 1
