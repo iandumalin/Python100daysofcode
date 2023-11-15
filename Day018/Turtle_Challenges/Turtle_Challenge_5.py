@@ -1,8 +1,8 @@
 from turtle import Turtle, Screen, colormode
 from random import choice
 
-amount_of_circles = 12
-circle_radius = 100
+amount_of_circles = 100
+circle_radius = 200
 color_tuple = (
     (choice(range(150, 256)), choice(range(50, 256)), choice(range(50, 256))),
     (choice(range(150, 256)), choice(range(50, 256)), choice(range(50, 256))),
@@ -24,7 +24,7 @@ for _ in range(amount_of_circles) :
     turtle.pencolor(color_tuple[color_choice])
     color_choice += 1
     if color_choice >= 4 : color_choice = 0
-    turtle.circle(100)
+    turtle.circle(circle_radius)
     turtle.left(360/amount_of_circles)
 
 main_screen = Screen()
